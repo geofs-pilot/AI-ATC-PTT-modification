@@ -85,33 +85,30 @@
             atcButton.className = 'mdl-button mdl-js-button mdl-button--icon geofs-f-standard-ui geofs-atc-icon';
             atcButton.title = "Click to talk to the ATC. Ctrl+click (Cmd+click on Mac) to input text instead of talking.";
             // Listen for 'W' key press
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'w' || e.key === 'W') {
-        // Create a synthetic click event with ctrlKey set to true
-        const syntheticEvent = new MouseEvent('click', {
-            bubbles: true,
-            cancelable: true,
-            ctrlKey: true, // Simulate Ctrl key being pressed
-        });
-
-        // Dispatch the event on the ATC button
-        atcButton.dispatchEvent(syntheticEvent);
-    }
-});
-
-atcButton.addEventListener('click', (e) => {
-    if (typeof tunedInAtc === 'undefined') {
-        error("No frequency set. Click the radio icon to set the frequency!");
-    } else if (e.ctrlKey || e.metaKey) {
-        let pilotMsg = prompt("Please enter your message to the ATC:");
-        if (pilotMsg != null && pilotMsg != "") {
-            callAtc(pilotMsg);
-        } else {
-            error("You cancelled the dialog");
-        }
-
-
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'w' || e.key === 'W') {
+                    // Create a synthetic click event with ctrlKey set to true
+                    const syntheticEvent = new MouseEvent('click', {
+                        bubbles: true,
+                        cancelable: true,
+                        ctrlKey: true, // Simulate Ctrl key being pressed
+                    });
             
+                    // Dispatch the event on the ATC button
+                    atcButton.dispatchEvent(syntheticEvent);
+                }
+            });
+            
+            atcButton.addEventListener('click', (e) => {
+                if (typeof tunedInAtc === 'undefined') {
+                    error("No frequency set. Click the radio icon to set the frequency!");
+                } else if (e.ctrlKey || e.metaKey) {
+                    let pilotMsg = prompt("Please enter your message to the ATC:");
+                    if (pilotMsg != null && pilotMsg != "") {
+                        callAtc(pilotMsg);
+                    } else {
+                        error("You cancelled the dialog");
+                    }
                 } else {
                     navigator.mediaDevices.getUserMedia({ audio: true });
                     let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
