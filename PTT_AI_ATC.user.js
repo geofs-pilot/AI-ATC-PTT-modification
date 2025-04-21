@@ -86,7 +86,7 @@
             atcButton.title = "Click to talk to the ATC. Ctrl+click (Cmd+click on Mac) to input text instead of talking.";
             // Listen for 'W' key press
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'w' || e.key === 'W') {
+                if (e.key === 'd' || e.key === 'D') {
                     // Create a synthetic click event with ctrlKey set to true
                     const syntheticEvent = new MouseEvent('click', {
                         bubbles: true,
