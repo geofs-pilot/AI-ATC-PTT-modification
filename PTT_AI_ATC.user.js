@@ -84,21 +84,29 @@
             const atcButton = document.createElement('button');
             atcButton.className = 'mdl-button mdl-js-button mdl-button--icon geofs-f-standard-ui geofs-atc-icon';
             atcButton.title = "Click to talk to the ATC. Ctrl+click (Cmd+click on Mac) to input text instead of talking.";
-            // Listen for 'W' key press
+
+            // Listen for 'D' key press
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'd' || e.key === 'D') {
+                if (
+                    (e.key === 'd' || e.key === 'D') &&
+                    !e.ctrlKey &&
+                    !e.shiftKey &&
+                    !e.altKey &&
+                    !e.metaKey
+                ) {
                     // Create a synthetic click event with ctrlKey set to true
                     const syntheticEvent = new MouseEvent('click', {
                         bubbles: true,
                         cancelable: true,
                         ctrlKey: true, // Simulate Ctrl key being pressed
                     });
-            
+
                     // Dispatch the event on the ATC button
                     atcButton.dispatchEvent(syntheticEvent);
                 }
             });
-            
+
+
             atcButton.addEventListener('click', (e) => {
                 if (typeof tunedInAtc === 'undefined') {
                     error("No frequency set. Click the radio icon to set the frequency!");
