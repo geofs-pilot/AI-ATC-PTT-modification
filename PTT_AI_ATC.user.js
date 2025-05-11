@@ -86,18 +86,20 @@
             atcButton.title = "Click to talk to the ATC. Ctrl+click (Cmd+click on Mac) to input text instead of talking.";
 
             // Listen for 'D' key press
-            document.addEventListener('keydown', (e) => {
-                if (
-                    (e.key === 'd' || e.key === 'D') &&
-                    !e.ctrlKey &&
-                    !e.shiftKey &&
-                    !e.altKey &&
-                    !e.metaKey
-                ) {
+            document.addEventListener("keydown", function (event) {
+                if (event.key.toLowerCase() === "d"  && !event.ctrlKey && !event.altKey && !event.metaKey) {
+                    const active = document.activeElement;
+                    const tag = active.tagName.toLowerCase();
+
+                    const isTextField =
+                          tag === "input" ||
+                          tag === "textarea" ||
+                          active.isContentEditable;
+
+                    if (isTextField) return; // Ignore if typing in a text field
                     // Create a synthetic click event with ctrlKey set to true
                     const syntheticEvent = new MouseEvent('click', {
-                        bubbles: true,
-                        cancelable: true,
+                        //cancelable: true,
                         ctrlKey: true, // Simulate Ctrl key being pressed
                     });
 
