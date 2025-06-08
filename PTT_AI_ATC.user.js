@@ -2,7 +2,7 @@
 // @name         GeoFS AI (GPT) ATC with PTT key
 // @namespace    https://avramovic.info/
 // @version      1.0.8
-// @description  AI ATC for GeoFS using free PuterJS GPT API
+// @description  AI ATC for GeoFS using free PuterJS GPT API. Press D to open the text message field.
 // @author       Nemanja Avramovic, modified by geofspilot
 // @license      MIT
 // @match        https://www.geo-fs.com/geofs.php*
