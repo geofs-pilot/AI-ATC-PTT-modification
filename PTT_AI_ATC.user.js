@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         GeoFS AI (GPT) ATC
+// @name         GeoFS AI (GPT) ATC with PTT key
 // @namespace    https://avramovic.info/
 // @version      1.0.8
 // @description  AI ATC for GeoFS using free PuterJS GPT API
-// @author       Nemanja Avramovic
+// @author       Nemanja Avramovic, modified by geofspilot
 // @license      MIT
 // @match        https://www.geo-fs.com/geofs.php*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=geo-fs.com
